@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Dashboard</h1>
+        <form method="POST" action="/weather">
+            <input type="text" name="location" placeholder="Enter location (e.g., London)" required>
+            <button type="submit">Get Weather</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if weather %}
+            <div class="weather-card">
+                <h2>{{ weather.location.name }}, {{ weather.location.country }}</h2>
+                <div class="weather-info">
+                    <img src="{{ weather.current.condition.icon }}" alt="{{ weather.current.condition.text }}">
+                    <p>{{ weather.current.condition.text }}</p>
+                    <p>Temperature: {{ weather.current.temp_c }}°C ({{ weather.current.temp_f }}°F)</p>
+                    <p>Humidity: {{ weather.current.humidity }}%</p>
+                    <p>Wind: {{ weather.current.wind_kph }} km/h ({{ weather.current.wind_mph }} mph)</p>
+                    <p>AQI: {{ weather.current.air_quality['us-epa-index'] }}</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html> 
