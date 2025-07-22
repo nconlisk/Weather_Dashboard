@@ -45,7 +45,7 @@ pip install -r requirements.txt
 ## Quick Start
 1. **Clone and setup**:
    ```bash
-   git clone https://github.com/your-username/Weather_Dashboard.git
+   git clone https://github.com/nconlisk/Weather_Dashboard.git
    cd Weather_Dashboard
    echo "WEATHER_API_KEY=your_key_here" > .env
    pip install -r requirements.txt
